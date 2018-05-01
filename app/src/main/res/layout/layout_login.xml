@@ -6,44 +6,59 @@
     android:layout_height="match_parent"
     tools:context="mx.com.itesm.afinal.Login">
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo"
+            android:id="@+id/imageLogo"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"/>
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/usernameEditText"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Username..."
-            android:inputType="text"
+            android:inputType="textVisiblePassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/passwordEditText"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Password..."
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
 
         <com.gc.materialdesign.views.ButtonRectangle
             android:id="@+id/buttonLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="342dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:background="#1E88E5"
             android:text="Entrar" />
 
