@@ -2,79 +2,129 @@ package mx.com.itesm.afinal;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Vendedor extends AppCompatActivity {
+
+    private static final String url = "http://ubiquitous.csf.itesm.mx/~pddm-1022009/ServiciosProyecto/servicio.ventas.index.php";
+
+
+    private List<Object> list;                  //Lista de objetos del request
+    private Gson gson;
+    //private ProgressDialog progressDialog;
+    private ListView catList;
+
+    private Map<String, Object> mapCat;          //Mapa auxiliar para las categorías e ingresar a sus datos
+    private String categories_IDs[];
+    private String categories_Modelos[];
+    private String categories_Precios[];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_vendedor);
+        setContentView(R.layout.layout_cliente);
 
-        final ListView listview = (ListView) findViewById(R.id.listViewVendedor);
-        String[] values = new String[] { "2018-05-03 09:11:00,1,1,5)",
-                "2018-05-04 12:12:00,2,2,8)",
-                "2018-05-05 14:14:00,5,3,12)" };
+        catList = (ListView) findViewById(R.id.listViewCliente);
 
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-        final StableArrayAdapter adapter = new StableArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
+        //progressDialog = new ProgressDialog(Cliente.this);
+        //progressDialog.setMessage("Cargando datos...");
+        //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        //progressDialog.show();
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+        //String request de las categorías/
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+            public void onResponse(String s) {
+                Log.d("Categories", "Making the requests");
 
+
+                gson = new Gson();
+                list = (List) gson.fromJson(s, List.class);
+                categories_IDs = new String[list.size()];
+                categories_Modelos = new String[list.size()];
+                categories_Precios = new String[list.size()];
+
+                /*
+                * Obtiene los nombres de las categorías elemento por elemento y los guarda en la lista de categorías
+                * */
+                for (int i = 0; i < list.size(); ++i) {
+                    mapCat = (Map<String, Object>) list.get(i);
+                    categories_IDs[i] = (String) mapCat.get("fecha_venta");
+                    //categories_Modelos[i] = (String) mapCat.get("modelo");
+                    //categories_Precios[i] = (String) mapCat.get("precio");
+                }
+
+                /*
+                * Pone los nombres de la lista de categorías en el list view*/
+                catList.setAdapter(new ArrayAdapter(Vendedor.this, android.R.layout.simple_list_item_1, categories_IDs));
+                //progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(Vendedor.this, "Error", Toast.LENGTH_LONG).show();
+            }
         });
 
-    }
+        RequestQueue rQueue = Volley.newRequestQueue(Vendedor.this);
+        rQueue.add(request);
 
-    private class StableArrayAdapter extends ArrayAdapter<String> {
+        /*
+        * Cuando se toca un elemento de la categoría este manda a llamar a otra ctividad con el
+        * numero de categoría de los autos a desplegar*/
+        catList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+                //Obtiene el id de la categoría y co combierte a Double para que pueda ser manejado en la siguiente actividad/
+                //mapCat = (Map<String, Object>)list.get(position);
+                String myID = (String) mapCat.get("venta_producto_id");
+                String myFecha = (String) mapCat.get("fecha_venta");
+                String myCantidad = (String) mapCat.get("cantidad");
+                String myProductoId = (String) mapCat.get("producto_id");
+                String myClienteId = (String) mapCat.get("cliente_id");
 
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
+
+                Intent intent = new Intent(getBaseContext(), Venta.class);
+                intent.putExtra("venta_producto_id", String.valueOf(myID));
+                intent.putExtra("fecha_venta", String.valueOf(myFecha));
+                intent.putExtra("cantidad", String.valueOf(myCantidad));
+                intent.putExtra("producto_id", String.valueOf(myProductoId));
+                intent.putExtra("cliente_id", String.valueOf(myClienteId));
+                startActivity(intent);
+
+                //Log.d("ALC", String.valueOf(s_catID));
+
+                //Intent intent = new Intent(getApplicationContext(), Producto.class);
+                //intent.putExtra("producto_id", String.valueOf(s_catID)); //Aqui manda el id de la categoría/
+                //startActivity(intent);
+
             }
-        }
+        });
 
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
 
     }
 }

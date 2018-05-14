@@ -23,7 +23,8 @@
         <activity android:name=".Login" />
         <activity android:name=".Gerente" />
         <activity android:name=".Dueno" />
-        <activity android:name=".Producto"></activity>
+        <activity android:name=".Producto" />
+        <activity android:name=".Venta"></activity>
     </application>
 
 </manifest>

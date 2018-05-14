@@ -17,6 +17,10 @@ public class Producto extends AppCompatActivity {
     private TextView etPrecio;
     private ButtonRectangle botonReparar;
 
+    private String idProducto ="";
+    private String modeloProducto ="";
+    private String precioProducto ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +28,41 @@ public class Producto extends AppCompatActivity {
         setContentView(R.layout.layout_producto);
 
 
+
+        idProducto = getIntent().getExtras().getString("producto_id");
+        modeloProducto = getIntent().getExtras().getString("modelo");
+        precioProducto = getIntent().getExtras().getString("precio");
+
         etProducto = (TextView) findViewById(R.id.textViewProducto);
         etPrecio = (TextView) findViewById(R.id.textViewPrecio);
 
         botonComprar = (ButtonRectangle) findViewById(R.id.buttonComprar);
         botonReparar = (ButtonRectangle) findViewById(R.id.buttonReparar);
 
+        etProducto.setText(modeloProducto);
+        etPrecio.setText("$"+precioProducto);
+
+        Toast.makeText(getApplicationContext(),"ID: " + idProducto, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Producto: " + modeloProducto, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Precio: " + precioProducto, Toast.LENGTH_SHORT).show();
+
 
         botonComprar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(),"Producto Arreglado", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Producto Agregado a Carrito", Toast.LENGTH_LONG).show();
             }
 
         });
 
-        botonComprar.setOnClickListener(new View.OnClickListener() {
+        botonReparar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(),"Precio: $3400", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Precio Reparacion: $3400", Toast.LENGTH_LONG).show();
             }
 
         });
