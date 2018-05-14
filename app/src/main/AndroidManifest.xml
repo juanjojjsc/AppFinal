@@ -22,7 +22,8 @@
         <activity android:name=".Vendedor" />
         <activity android:name=".Login" />
         <activity android:name=".Gerente" />
-        <activity android:name=".Dueno"></activity>
+        <activity android:name=".Dueno" />
+        <activity android:name=".Producto"></activity>
     </application>
 
 </manifest>

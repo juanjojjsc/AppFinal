@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.com.itesm.afinal.Producto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            app:srcCompat="@drawable/logo"
+            android:id="@+id/imageLogo"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"/>
+
+
+        <TextView
+            android:id="@+id/textViewProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Monitor Kingston" />
+
+        <TextView
+            android:id="@+id/textViewPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:text="$300" />
+
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/buttonComprar"
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#1E88E5"
+            android:layout_marginTop="10dp"
+            android:text="Comprar" />
+
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/buttonReparar"
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#1E88E5"
+            android:layout_marginTop="10dp"
+            android:text="Reparar" />
+
+
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

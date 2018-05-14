@@ -6,4 +6,176 @@
     android:layout_height="match_parent"
     tools:context="mx.com.itesm.afinal.Dueno">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="BORRADO DE USUARIOS" />
+
+            <TextView
+                android:id="@+id/textViewUsuario1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Usuario" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextUsuario1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewPassword1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Password" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextPassword1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textViewNombre1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Nombre" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextNombre1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewApellidoP1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Apellido Paterno" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextApellidoP1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewApellidoM1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Apellido Materno" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextApellidoM1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewIFE1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="IFE" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextIFE1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewTel1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Telefono" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextTel1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <TextView
+                android:id="@+id/textViewDireccion1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Direccion" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editTextDireccion1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPassword|textVisiblePassword" />
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:id="@+id/buttonRegistrar1"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="#1E88E5"
+                android:layout_marginTop="10dp"
+                android:text="Borrar" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>
